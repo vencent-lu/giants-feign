@@ -1,0 +1,148 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.github.vencent-lu</groupId>
+  <artifactId>giants-feign</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  
+  <name>giants-feign</name>
+  <description>Giants Feign Java Web Framework and reusable components.</description>
+  <url>https://github.com/vencent-lu/giants-feign</url>
+  
+  <licenses>
+    <license>
+        <name>The Apache Software License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  
+  <developers>
+	<developer>
+		<name>vencent.lu</name>
+		<email>scsedux@163.com</email>
+	</developer>
+  </developers>
+  
+  <scm>
+	<connection>scm:git:git@github.com:vencent-lu/giants-feign.git</connection>
+	<developerConnection>scm:git:git@github.com:vencent-lu/giants-feign.git</developerConnection>
+	<url>git@github.com:vencent-lu/giants-feign.git</url>
+  </scm>
+  
+   <build>
+	<plugins>
+		<!-- Source -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-source-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>attach-sources</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<!-- Javadoc -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.9.1</version>
+			<executions>
+				<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<!-- GPG -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-gpg-plugin</artifactId>
+			<version>1.5</version>
+			<executions>
+				<execution>
+					<phase>verify</phase>
+					<goals>
+						<goal>sign</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration> 
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <configuration>
+            <wtpversion>2.0</wtpversion>
+            <downloadSources>true</downloadSources>
+            <downloadJavadocs>true</downloadJavadocs>
+          </configuration> 
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <properties>
+    <!-- 项目版本定义 -->
+    <project-name>giants-feign</project-name>
+        
+    <!-- Plugin的属性定义 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+	  <dependency>
+		  <groupId>${project.groupId}</groupId>
+		  <artifactId>giants-common</artifactId>
+		  <version>1.1.0</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>${project.groupId}</groupId>
+		  <artifactId>giants-analyse</artifactId>
+		  <version>1.0.4</version>
+	  </dependency>
+
+	  <dependency>
+		  <groupId>io.github.openfeign</groupId>
+		  <artifactId>feign-core</artifactId>
+		  <version>10.12</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-beans</artifactId>
+		  <version>5.3.7</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>com.alibaba</groupId>
+		  <artifactId>fastjson</artifactId>
+		  <version>1.2.76</version>
+	  </dependency>
+  </dependencies>
+  
+  <distributionManagement>
+    <snapshotRepository>
+		<id>oss</id>
+		<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+	</snapshotRepository>
+	<repository>
+		<id>oss</id>
+		<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+	</repository>
+  </distributionManagement>
+</project>
