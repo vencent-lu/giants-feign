@@ -20,6 +20,8 @@ public class GiantsInvocationHandler implements InvocationHandler {
 
     private InvocationHandler invocationHandler;
 
+    private boolean logCallStackTimeAnalyse = false;
+
     private boolean logArguments = false;
 
     public GiantsInvocationHandler(Target target, Map<Method, InvocationHandlerFactory.MethodHandler> dispatch) {
@@ -27,14 +29,17 @@ public class GiantsInvocationHandler implements InvocationHandler {
     }
 
     public GiantsInvocationHandler(Target target,
-                                   Map<Method, InvocationHandlerFactory.MethodHandler> dispatch, boolean logArguments) {
+                                   Map<Method, InvocationHandlerFactory.MethodHandler> dispatch,
+                                   boolean logCallStackTimeAnalyse,
+                                   boolean logArguments) {
         this.invocationHandler = new InvocationHandlerFactory.Default().create(target, dispatch);
+        this.logCallStackTimeAnalyse = logCallStackTimeAnalyse;
         this.logArguments = logArguments;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (ExecutionTimeProfiler.getEntry() != null) {
+        if (this.logCallStackTimeAnalyse && ExecutionTimeProfiler.getEntry() != null) {
             try{
                 ExecutionTimeProfiler.enter(this.getMethod(method, args));
                 return this.invocationHandler.invoke(proxy, method, args);
