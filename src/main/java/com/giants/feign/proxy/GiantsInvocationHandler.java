@@ -74,6 +74,14 @@ public class GiantsInvocationHandler implements InvocationHandler {
         return sb.toString();
     }
 
+    public boolean isLogCallStackTimeAnalyse() {
+        return logCallStackTimeAnalyse;
+    }
+
+    public void setLogCallStackTimeAnalyse(boolean logCallStackTimeAnalyse) {
+        this.logCallStackTimeAnalyse = logCallStackTimeAnalyse;
+    }
+
     public boolean isLogArguments() {
         return logArguments;
     }

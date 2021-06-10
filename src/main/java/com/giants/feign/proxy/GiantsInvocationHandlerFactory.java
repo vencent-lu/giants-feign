@@ -34,6 +34,14 @@ public class GiantsInvocationHandlerFactory implements InvocationHandlerFactory 
         return new GiantsInvocationHandler(target, dispatch, this.logCallStackTimeAnalyse, this.logArguments);
     }
 
+    public boolean isLogCallStackTimeAnalyse() {
+        return logCallStackTimeAnalyse;
+    }
+
+    public void setLogCallStackTimeAnalyse(boolean logCallStackTimeAnalyse) {
+        this.logCallStackTimeAnalyse = logCallStackTimeAnalyse;
+    }
+
     public boolean isLogArguments() {
         return logArguments;
     }
