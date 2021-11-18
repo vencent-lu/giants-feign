@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * BeanQueryMapNestEncoder TODO
  * date time: 2021/6/4 14:13
- * Copyright 2021 github.com/vencent-lu/giants-boot Inc. All rights reserved.
+ * Copyright 2021 github.com/vencent-lu/giants-feign Inc. All rights reserved.
  * @author vencent-lu
  * @since 1.0
  */

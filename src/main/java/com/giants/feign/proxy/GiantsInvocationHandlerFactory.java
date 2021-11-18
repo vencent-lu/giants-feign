@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * GiantsInvocationHandlerFactory TODO
  * date time: 2021/6/9 19:00
- * Copyright 2021 github.com/vencent-lu/giants-boot Inc. All rights reserved.
+ * Copyright 2021 github.com/vencent-lu/giants-feign Inc. All rights reserved.
  *
  * @author vencent-lu
  * @since 1.0

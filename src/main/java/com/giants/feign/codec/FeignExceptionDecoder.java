@@ -13,17 +13,19 @@ import java.nio.charset.StandardCharsets;
 /**
  * FeignErrorDecoder TODO
  * date time: 2021/6/4 14:14
- * Copyright 2021 github.com/vencent-lu/giants-boot Inc. All rights reserved.
+ * Copyright 2021 github.com/vencent-lu/giants-feign Inc. All rights reserved.
  * @author vencent-lu
  * @since 1.0
  */
-public class FeignErrorDecoder implements ErrorDecoder {
+public class FeignExceptionDecoder implements ErrorDecoder {
 
-    private final static Logger logger = LoggerFactory.getLogger(FeignErrorDecoder.class);
+    private final static Logger logger = LoggerFactory.getLogger(FeignExceptionDecoder.class);
+
+    private int responseExceptionStatus = 600;
 
     @Override
     public Exception decode(String methodKey, Response response) {
-        if (response.status() == 600) {
+        if (response.status() == this.responseExceptionStatus) {
             try {
                 return (Exception)JSON.parse(Util.toString(response.body().asReader(StandardCharsets.UTF_8)));
             } catch (IOException e) {
@@ -32,5 +34,9 @@ public class FeignErrorDecoder implements ErrorDecoder {
             }
         }
         return new Default().decode(methodKey, response);
+    }
+
+    public void setResponseExceptionStatus(int responseExceptionStatus) {
+        this.responseExceptionStatus = responseExceptionStatus;
     }
 }
