@@ -44,6 +44,6 @@ giants:
     response-exception-status: 600
     # 指定feign client 对应该版本号
     client-version-map: {
-      rm-auth-server: lt
+      giants-auth-server: 1.0.0
     }
 ```
