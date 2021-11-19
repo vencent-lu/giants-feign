@@ -42,8 +42,7 @@ giants:
   feign:
     # FeignExceptionDecoder 反序列化异常对应状态码 默认值 600
     response-exception-status: 600
-    # 指定feign client 对应该版本号
-    client-version-map: {
+    # 指定feign client 对应该版本号，Map类型 key:Feign服务名，value:版本号
+    client-version-map:
       giants-auth-server: 1.0.0
-    }
 ```
