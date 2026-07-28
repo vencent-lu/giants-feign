@@ -1,6 +1,7 @@
 package com.giants.feign.codec;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.Feature;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
@@ -27,7 +28,8 @@ public class FeignExceptionDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         if (response.status() == this.responseExceptionStatus) {
             try {
-                return (Exception)JSON.parse(Util.toString(response.body().asReader(StandardCharsets.UTF_8)));
+                return (Exception)JSON.parseObject(Util.toString(response.body().asReader(StandardCharsets.UTF_8)),
+                        Object.class, Feature.SupportAutoType);
             } catch (IOException e) {
                 logger.error("Exception deserialization failed !",e);
                 return new Default().decode(methodKey, response);

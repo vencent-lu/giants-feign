@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.github.vencent-lu</groupId>
     <artifactId>giants-feign</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 

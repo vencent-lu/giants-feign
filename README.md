@@ -28,7 +28,7 @@ giants-feign 是对 Spring Cloud OpenFeign 的功能扩展，用于满足 Spring
 <dependency>
     <groupId>com.github.vencent-lu</groupId>
     <artifactId>giants-feign</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 
