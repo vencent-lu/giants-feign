@@ -37,8 +37,23 @@ public class GiantsFeignTargeter implements Targeter {
 
         public GiantsTarget(Target<T> target, String version) {
             super(target.type(), target.name(),
-                    new StringBuilder(target.url()).append('-').append(version.replace('.','-')).toString());
+                    addVersionToUrl(target.url(), version));
             this.version = version;
+        }
+
+        public static String addVersionToUrl(String url, String version) {
+            int protocolEnd = url.indexOf("://");
+            if (protocolEnd == -1) {
+                throw new IllegalArgumentException("Invalid URL: missing protocol");
+            }
+            int pathStart = url.indexOf('/', protocolEnd + 3);
+            String versionSuffix = "-" + version.replace(".", "-");
+            if (pathStart == -1) {
+                return url + versionSuffix;
+            }
+            return new StringBuilder(url)
+                    .insert(pathStart, versionSuffix)
+                    .toString();
         }
 
         public String getVersion() {
